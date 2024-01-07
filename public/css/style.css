@@ -11,6 +11,7 @@
     --surface-color: rgba(255,255,255,0.05);
     --surface-color-hover: rgba(0,0,0,0.02);
     --highlight:rgba(255, 255,255,0.2);
+    --highlight-color:rgba(255, 255,255,0.5);
     --switch-bg-url: url(/img/MoonStars.svg);
 }
 
@@ -21,7 +22,12 @@
     --surface-color: rgba(0,0,0,0.05);
     --surface-color-hover: rgba(0,0,0,0.02);
     --highlight:rgba(0,0,0,0.1);
+    --highlight-color:rgba(0, 0,0,0.3);
     --switch-bg-url: url(/img/Sun.svg);
+}
+
+.light #container{
+    margin-top: 50px;
 }
 
 body{
@@ -56,7 +62,7 @@ body *{
 #profile p{
     font-weight: 500;
     line-height: 24px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 #switch{
@@ -79,12 +85,15 @@ body *{
     top:  50%;
     left: 0;
     transform: translateY(-50%);
+    animation: slide-back 0.2s ;
+}
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button{
-    left: initial;
-    right: 0;
-
+    animation: slide-in 0.4s forwards;
 }
 
 #switch span{
@@ -162,5 +171,25 @@ footer{
 
     .light{
         --bg-url:url(/img/bg-desktop-light.jpg);
+    }
+}
+
+@keyframes slide-in{
+    from{
+        left: 0;
+    }
+    
+    to{
+        left: 50%;
+    }
+}
+
+@keyframes slide-back{
+    from{
+        left: 50%;
+    }
+    
+    to{
+        left: 0;
     }
 }
